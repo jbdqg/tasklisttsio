@@ -1,0 +1,148 @@
+apply plugin: 'android-library'
+apply plugin: 'maven'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0'
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven { url 'http://files.couchbase.com/maven2/' }
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    // workaround for "duplicate files during packaging of APK" issue
+    // see https://groups.google.com/d/msg/adt-dev/bl5Rc4Szpzg/wC8cylTWuIEJ
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDir file('jniLibs')
+        }
+    }
+}
+
+def buildAndroidWithArtifacts = System.getProperty("buildAndroidWithArtifacts")
+
+dependencies {
+
+    // this library is only needed by test code (95% certain), and therefore
+    // instrumentTestCompile is used rather than compile.
+    androidTestCompile 'commons-io:commons-io:2.0.1'
+
+    compile buildAndroidWithArtifacts == null ?
+            project(':libraries:couchbase-lite-java-core') :
+            'com.couchbase.lite:couchbase-lite-java-core:' + System.getenv("MAVEN_UPLOAD_VERSION")
+
+    androidTestCompile 'com.squareup.okhttp:mockwebserver:2.0.0'
+
+}
+
+task generateJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    List<File> pathList = new ArrayList<File>();
+    pathList.add(file('./libraries/couchbase-lite-java-core/extra/doclet/doclet.jar'))
+    options.docletpath = pathList
+    options.doclet = "ExcludeDoclet"
+    options.showFromPublic()
+    exclude "org/apache/http/**", "com/couchbase/touchdb/**"
+}
+
+task createMavenDirectory(type: Exec) {
+    //these envs are required only to upload maven artifacts
+    print project.getGradle()
+    if(project.getGradle().toString().contains("createMavenDirectory")) {
+        if (System.getenv("MAVEN_UPLOAD_REPO_URL") == null) {
+            throw new GradleException("Please set MAVEN_UPLOAD_REPO_URL !!!")
+        }
+        if (System.getenv("MAVEN_UPLOAD_USERNAME") == null) {
+            throw new GradleException("Please set MAVEN_UPLOAD_USERNAME !!!")
+        }
+        if (System.getenv("MAVEN_UPLOAD_PASSWORD") == null) {
+            throw new GradleException("Please set MAVEN_UPLOAD_PASSWORD !!!")
+        }
+        if (System.getenv("MAVEN_UPLOAD_VERSION") == null) {
+            throw new GradleException("Please set MAVEN_UPLOAD_VERSION !!!")
+        }
+    }
+
+    ext {
+        uploadUser = System.getenv("MAVEN_UPLOAD_USERNAME") + ":" + System.getenv("MAVEN_UPLOAD_PASSWORD")
+        mkcolPath  = System.getenv("MAVEN_UPLOAD_REPO_URL") + "com/couchbase/lite/couchbase-lite-android/" + System.getenv("MAVEN_UPLOAD_VERSION") + "/"
+    }
+    commandLine "curl", "--user", uploadUser, "-X", "MKCOL", mkcolPath
+}
+
+
+// this hack is only needed for apache mod_dav based Maven repo's like file.couchbase.com.  otherwise, skip it
+createMavenDirectory.onlyIf { System.getenv("MAVEN_UPLOAD_REPO_URL").contains("files") }
+
+// first create the directory, then do the upload
+task uploadArchivesWrapper(dependsOn: createMavenDirectory) << {
+    uploadArchives.execute()
+}
+
+def mavenPath() {
+    System.getenv("MAVEN_BUILD_LOCAL") == "true" ?
+            'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath :
+            System.getenv("MAVEN_UPLOAD_REPO_URL")
+}
+
+// this will upload, but will not first create a directory (which is needed on some servers)
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: mavenPath()) {
+                authentication(userName: System.getenv("MAVEN_UPLOAD_USERNAME"), password: System.getenv("MAVEN_UPLOAD_PASSWORD"))
+            }
+            pom.version = System.getenv("MAVEN_UPLOAD_VERSION") != null ? System.getenv("MAVEN_UPLOAD_VERSION") : ''
+            pom.groupId = 'com.couchbase.lite'
+            pom.artifactId = 'couchbase-lite-android'
+            pom.project {
+                licenses {
+                    license {
+                        name 'Couchbase Community Edition License Agreement'
+                        url 'http://www.couchbase.com/agreement/community'
+                        distribution 'repo'
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives sourcesJar
+}

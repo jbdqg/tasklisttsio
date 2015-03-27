@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.couchbase.tasklist.MainActivity" >
+    <item android:id="@+id/action_new_list"
+        android:title="@string/action_new_list"
+        android:showAsAction="ifRoom|withText" />
+</menu>
+<!-- From: file:/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/src/main/res/menu/main.xml -->

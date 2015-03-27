@@ -1,0 +1,11 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+    android:gravity="center_vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:textColor="@color/list_text_color_selector"
+    android:background="?android:attr/activatedBackgroundIndicator"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall"/><!-- From: file:/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/src/main/res/layout/view_list_drawer.xml -->

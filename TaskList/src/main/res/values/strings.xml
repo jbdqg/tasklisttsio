@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasks List</string>
+    <string name="app_id">510926975701287</string>
+    <string name="action_new_list">New list</string>
+    <string name="action_login">Log in</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_delete">Remove</string>
+    <string name="action_show_document">Show Document</string>
+    <string name="hint_new_list">List Name</string>
+    <string name="hint_create_task">New task</string>
+    <string name="navigation_drawer_open">Open drawer</string>
+    <string name="navigation_drawer_close">Close drawer</string>
+    <string name="title_activity_share">Share</string>
+    <string name="title_dialog_new_list">New list</string>
+    <string name="title_activity_image_view">ImageViewActivity</string>
+</resources>

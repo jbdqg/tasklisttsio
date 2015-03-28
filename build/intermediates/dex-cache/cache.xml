@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/johnny/.gradle/caches/modules-2/files-2.1/org.codehaus.jackson/jackson-mapper-asl/1.9.2/95400a7922ce75383866eb72f6ef4a7897923945/jackson-mapper-asl-1.9.2.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="95400a7922ce75383866eb72f6ef4a7897923945">
+        <dex dex="/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/build/intermediates/pre-dexed/debug/jackson-mapper-asl-1.9.2-34f065c5309cf9d4b2a36898a0d76b5c4bd878ca.jar" />
+    </item>
+    <item
+        jar="/home/johnny/.gradle/caches/modules-2/files-2.1/com.github.oxo42/stateless4j/2.4.0/128aca4ace585f0b42faa739d0b968a154debb7a/stateless4j-2.4.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="128aca4ace585f0b42faa739d0b968a154debb7a">
+        <dex dex="/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/build/intermediates/pre-dexed/debug/stateless4j-2.4.0-836a333797ab0910b6e254a383344297f8177b74.jar" />
+    </item>
+    <item
+        jar="/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/build/intermediates/exploded-aar/tasklist.libraries/facebook/unspecified/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="cb24ec8b013614f541123809687e58d2ad4e2a56">
+        <dex dex="/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/build/intermediates/pre-dexed/debug/classes-1e2e18ca1b71f84878d430e910cf491d2a814782.jar" />
+    </item>
+    <item
+        jar="/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/libraries/couchbase-lite-java-core/build/libs/couchbase-lite-java-core.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="948f4ee79649eef5a7f28b4286f2bf0abed5a5f6">
+        <dex dex="/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/build/intermediates/pre-dexed/debug/couchbase-lite-java-core-6653b4aa34422c381d946d9a0cdb8f67df24d93c.jar" />
+    </item>
+    <item
+        jar="/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/build/intermediates/exploded-aar/tasklist.libraries/couchbase-lite-android/unspecified/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="eb29414ab055b6e72be85f982df933318e2e348b">
+        <dex dex="/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/build/intermediates/pre-dexed/debug/classes-701a384373e3bf6b9de7c8ce3caf9b95c2cd9a0f.jar" />
+    </item>
+    <item
+        jar="/home/johnny/.gradle/caches/modules-2/files-2.1/org.codehaus.jackson/jackson-core-asl/1.9.2/8493982bba1727106d767034bd0d8e77bc1931a9/jackson-core-asl-1.9.2.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="8493982bba1727106d767034bd0d8e77bc1931a9">
+        <dex dex="/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/build/intermediates/pre-dexed/debug/jackson-core-asl-1.9.2-36ea74c8401d0dd6ad66c34234eb1e994a8871ab.jar" />
+    </item>
+    <item
+        jar="/home/johnny/Android/Sdk/extras/android/m2repository/com/android/support/support-v4/19.0.0/support-v4-19.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="afee690af14bd2c32d400cdf78e746fd45c386fa">
+        <dex dex="/home/johnny/Dropbox/iscte/07-TecnologiasSistemasInformacaoOperacionais/trabalho/t1/tasklist/TaskList/build/intermediates/pre-dexed/debug/support-v4-19.0.0-61718f644651a80711a630ca8290640acd23fc51.jar" />
+    </item>
+
+</items>

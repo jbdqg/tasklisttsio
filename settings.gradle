@@ -1,0 +1,1 @@
+include ':libraries:couchbase-lite-android', ':libraries:couchbase-lite-java-core', ':libraries:facebook', ':TaskList'

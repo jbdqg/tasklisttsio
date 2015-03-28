@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guestLoginButton"
-        android:text="Log in as guest"/>
+        android:text="Work offline"/>
 
     <Button
         android:layout_width="wrap_content"
